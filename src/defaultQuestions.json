@@ -1,3 +1,269 @@
 {
-    "test": "This is a test"
+    "min": [
+        { 
+            "category": "min", 
+            "questionId": 1, 
+            "question": "¿La 'Bandeja Paisa', a qué región de colombia pertenece?",
+            "1":"Amazonas",
+            "2":"Orinoquia",
+            "3":"Antioquia",
+            "4":"Pacifica",
+            "correct":"Antioquia"
+        },      
+        {
+            "category": "min", 
+            "questionId": 2, 
+            "question": "¿En qué país se encuntra ubicado el cerro de Monserrate?",
+            "1":"Argentina",
+            "2":"Ecuador",
+            "3":"Colombia",
+            "4":"Péru",
+            "correct": "Colombia" 
+        }, 
+        {
+            "category": "min", 
+            "questionId": 3, 
+            "question": "¿Cómo se llama la chocolatina de colombia?",
+            "1":"Oreo",
+            "2":"Masts",
+            "3":"Juli Juli",
+            "4":"Jet",
+            "correct": "Jet" 
+        }, 
+        {
+            "category": "min", 
+            "questionId": 4, 
+            "question": "¿Cuál es la capital de Paraguay?",
+            "1":"Brasilia",
+            "2":"Buenos Aires",
+            "3":"Asunción",
+            "4":"Bogotá",
+            "correct": "Asunción"
+        },
+            
+        {
+            "category": "min", 
+            "questionId": 5, 
+            "question": "¿Qué país está entre Perú y Colombia?",
+            "1":"Ecuador",
+            "2":"Chile",
+            "3":"Brasil",
+            "4":"Uruguay",
+            "correct": "Ecuador"
+        }
+     ],
+    "low": [
+        {
+            "category": "low", 
+            "questionId": 1, 
+            "question": "¿En qué parte del cuerpo se encuentra la piel más gruesa?",
+            "1":"Cara",
+            "2":"Piernas",
+            "3":"Pecho",
+            "4":"Espalda",
+            "correct":"Espalda"
+        }, 
+        {
+            "category": "low", 
+            "questionId": 2, 
+            "question": "¿Qué pieza de ajedrez puede hacer un movimiento en forma de L?",
+            "1":"Reina",
+            "2":"Alfil",
+            "3":"Torre",
+            "4":"Caballo",
+            "correct":"Caballo" 
+        }, 
+        {
+            "category": "low", 
+            "questionId": 3, 
+            "question": "¿Cuál es el océano más grande del mundo?",
+            "1":"Atlántico",
+            "2":"Pacífico",
+            "3":"índico",
+            "4":"Ártico",
+            "correct":"Pacífico" 
+        }, 
+        {
+            "category": "low", 
+            "questionId": 4, 
+            "question": "¿Cuál es el país más grande del mundo?",
+            "1":"China",
+            "2":"Brasil",
+            "3":"Rusia",
+            "4":"Australia",
+            "correct":"Rusia" 
+        }, 
+        {
+            "category": "low", 
+            "questionId": 5, 
+            "question": "¿Cuál es el planeta más grande del Sistema Solar?",
+            "1":"Jupiter",
+            "2":"Tierra",
+            "3":"Venus",
+            "4":"Saturno",
+            "correct":"Jupiter" 
+        }
+
+
+     ],
+    "medium": [
+        {
+           "category": "medium", 
+            "questionId": 1, 
+            "question": "¿Cuál es la luna más grande de Saturno?",
+            "1":"Jápeto",
+            "2":"Mimas",
+            "3":"Dafine",
+            "4":"Titán",
+            "correct":"Titán"  
+        }, 
+        {
+            "category": "medium", 
+            "questionId": 2, 
+            "question": "¿Cuántos huesos tiene el cuerpo humano?",
+            "1":"207",
+            "2":"306",
+            "3":"206",
+            "4":"208",
+            "correct":"206"     
+        }, 
+        {
+            "category": "medium", 
+            "questionId": 3, 
+            "question": "¿Cuántas notas musicales existen?",
+            "1":"Doce",
+            "2":"Diez",
+            "3":"Trece",
+            "4":"Nueve",
+            "correct":"Titán"  
+        }, 
+        {
+            "category": "medium", 
+            "questionId": 4, 
+            "question": "¿Cuántos dientes tiene el ser humano?",
+            "1":"28",
+            "2":"40",
+            "3":"32",
+            "4":"31",
+            "correct":"32"  
+        }, 
+        {
+            "category": "medium", 
+            "questionId": 5, 
+            "question": "¿Cuál es el primer elemento de la tabla periódica?",
+            "1":"El hidrógeno",
+            "2":"El helio ",
+            "3":"El litio",
+            "4":"El berilio",
+            "correct":"El hidrógeno"  
+        }
+
+
+     ], 
+     "high": [
+            {
+                "category": "high", 
+                "questionId": 1, 
+                "question": "¿Cuál es el primer libro de la Biblia?",
+                "1":"Éxodo",
+                "2":"Génesis",
+                "3":"Salmos",
+                "4":"Esther",
+                "correct":"Génesis"
+            }, 
+            {
+                "category": "high", 
+                "questionId": 2, 
+                "question": "¿Quién postuló las leyes del movimiento?",
+                "1":"Isaac Newton",
+                "2":"William Crookes",
+                "3":"Joseph John Thomson",
+                "4":"Gottfried Leibniz",
+                "correct":"Isaac Newton"
+            }, 
+            {
+                "category": "high", 
+                "questionId": 3, 
+                "question": "¿Cuál es el órgano más grande del cuerpo humano?",                
+                "1":"La piel",
+                "2":"El Corazón",
+                "3":"El hígado",
+                "4":"El intestino",
+                "correct":"La piel"
+            }, 
+            {
+                "category": "high", 
+                "questionId": 4, 
+                "question": "¿Cuál es el idioma más antiguo en Europa?",                
+                "1":"Arameo",
+                "2":"Catalán",
+                "3":"Vasco",
+                "4":"Francés",
+                "correct":"Vasco"
+            }, 
+            {
+                "category": "high", 
+                "questionId": 5, 
+                "question": "¿Dónde escribió Cervantes la mayor parte de 'El Quijote'?",                
+                "1":"En la Cárcel de Sevilla",
+                "2":"Alcalá de Henares",
+                "3":"Valladolid",
+                "4":"Córdoba",
+                "correct":"En la Cárcel de Sevilla"
+            }
+        ],
+    "max": [
+        {
+            "category": "max", 
+            "questionId": 1, 
+            "question": "¿Quién ideó las leyes de la herencia genética?",
+            "1":"Gregor Mendel",
+            "2":"Hugo de Vries",
+            "3":"Carl Correns",
+            "4":"William Bateson",
+            "correct":"Gregor Mendel"  
+        }, 
+        {
+            "category": "max", 
+            "questionId": 2, 
+            "question": "¿Cuál es el número de electrones que pueden alojar en la orbitra más extrema de un atomo?",
+            "1":"8",
+            "2":"10",
+            "3":"7",
+            "4":"9",
+            "correct":"8"   
+        }, 
+        {
+            "category": "max", 
+            "questionId": 3, 
+            "question": "¿En qué año fui publicado el articulo 'A Dynamical Theory of the Electromagnetic Field' por James Clerk Maxwell?",
+            "1":"1890",
+            "2":"1864",
+            "3":"1865",
+            "4":"1860",
+            "correct":"8"   
+        }, 
+        {
+            "category": "max", 
+            "questionId": 4, 
+            "question": "¿Quién descubrio el electrón",
+            "1":"William Crookes",
+            "2":"Joseph John Thomson",
+            "3":"Robert Wilhem Bunsen",
+            "4":"Gustav Robert Kirchhoff",
+            "correct":"Joseph John Thomson"
+        }, 
+        {
+            "category": "max", 
+            "questionId": 5, 
+            "question": "¿Cuál es el gas mayoritario de la atmósfera terrestre?",
+            "1":"O",
+            "2":"N",
+            "3":"Ar",
+            "4":"CO2",
+            "correct":"N"
+        }
+
+
+     ]
 }

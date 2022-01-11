@@ -32,6 +32,7 @@ function Login(){
                 })
                 .then(res => res.json())
                 .then(data => {
+                    console.log(data)
                     if(data.error){
                         $alert.textContent = data.error
                         $alert.classList.remove('hidden')
@@ -40,7 +41,15 @@ function Login(){
                         }, 5000);
                     }
                     else{
-                        window.location.href = `${window.origin}/Home`
+                        $alert.textContent = 'Registro exitoso'
+                        $alert.style.color = '#F7901E'
+                        $alert.classList.remove('hidden')
+                        setTimeout(()=>{
+                            $alert.textContent = 'Por favor ingresa tus datos y comienza el juego'
+                        }, 4000)
+                        setTimeout(() => {
+                            $alert.classList.add('hidden')
+                        }, 10000);
                     }
                 })
             }

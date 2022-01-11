@@ -27,6 +27,14 @@ export default function Login(){
                             $alert.classList.add('hidden')
                         }, 10000);
             }
+            else if(pass.length > 4 || pass.length < 4){
+                        $alert.textContent = 'Tu pin debe contener CUATRO digitos'
+                        $alert.style.color = 'red'
+                        $alert.classList.remove('hidden')
+                        setTimeout(() => {
+                            $alert.classList.add('hidden')
+                        }, 10000);
+            }
             else {
                 fetch('/register', {
                     method: 'POST',
@@ -42,7 +50,15 @@ export default function Login(){
                         }, 5000);
                     }
                     else if(data.conf === 'register success'){
-                        window.location.href = `${window.origin}`
+                        $alert.textContent = 'Registro exitoso'
+                        $alert.style.color = '#F7901E'
+                        $alert.classList.remove('hidden')
+                        setTimeout(()=>{
+                            $alert.textContent = 'Por favor ingresa tus datos y comienza el juego'
+                        }, 4000)
+                        setTimeout(() => {
+                            $alert.classList.add('hidden')
+                        }, 10000);
                     }
                 })
             }
