@@ -1,9 +1,44 @@
+@font-face {
+    font-family: 'Futura LtCn BT';
+    src:url('../fonts/FuturaBT-LightCondensed.woff2') format('woff2');
+    font-weight:         300;
+    font-style: normal;
+    font-display: swap;
+}
 .main-container {
+    width: 75vh;
+    height: 75vh;
+    display: grid;
+    border-radius: 10%;
+    border: solid 1px #f7901e;
+    grid-template-rows: 2fr 5fr;
+    align-items: center;
+    background-color: #000000bd;
+}
+.quetion {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    border-bottom: solid 1px #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Futura LtCn BT';
+    font-size: 1.3rem;
+}
+.answers{
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--transparent-color);
+}
+ul li{
+    list-style: none;
+    margin: 15px;
+}
+ul li label{
+    font-size: 1.5rem;
+    margin-left: 15px;
 }

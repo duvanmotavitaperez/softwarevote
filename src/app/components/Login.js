@@ -97,8 +97,8 @@ export default function Login(){
                         }, 5000);
                     }
                     else{
-                        console.log(data)
-                        // window.location.href = `${window.origin}/login`
+                             window.location.href = `${window.origin}/login`
+                       
                     }
                 })
             }
