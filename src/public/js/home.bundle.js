@@ -10,36 +10,6 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/app/components/InputItem.js":
-/*!*****************************************!*\
-  !*** ./src/app/components/InputItem.js ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ InputItem)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n // import PropTypes from \"prop-types\"\n\nfunction InputItem(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    className: \"content-input\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"textarea\", {\n    className: \"input-item\",\n    name: props.name,\n    id: props.id,\n    cols: \"1\",\n    rows: \"1\",\n    placeholder: props.placeholder,\n    spellCheck: \"false\"\n  }));\n} // InputItem.propTypes = {\n//     name: PropTypes.string\n// }\n\n//# sourceURL=webpack://technical-challenge/./src/app/components/InputItem.js?");
-
-/***/ }),
-
-/***/ "./src/app/components/Login.js":
-/*!*************************************!*\
-  !*** ./src/app/components/Login.js ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Login)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _InputItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./InputItem */ \"./src/app/components/InputItem.js\");\n/* harmony import */ var _SendButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SendButton */ \"./src/app/components/SendButton.js\");\n\n\n\n\nfunction Login() {\n  window.onload = function () {\n    var $form = document.getElementById('formdata');\n    var $eye = document.getElementById('showText');\n    var $buttonRegister = document.querySelectorAll('.button-send')[0];\n    var $buttonPlay = document.querySelectorAll('.button-send')[1];\n    var $alert = document.querySelector('.alert');\n    $eye.addEventListener('click', function () {\n      $eye.classList.toggle('show-text');\n    });\n    $buttonRegister.addEventListener('click', function () {\n      var formData = new FormData($form);\n      var username = formData.get('username');\n      var pass = formData.get('userpass');\n\n      if (username == '' || pass == '') {\n        $alert.textContent = 'Por favor completa todos los campos';\n        $alert.style.color = 'red';\n        $alert.classList.remove('hidden');\n        setTimeout(function () {\n          $alert.classList.add('hidden');\n        }, 10000);\n      } else if (pass.length > 4 || pass.length < 4) {\n        $alert.textContent = 'Tu pin debe contener CUATRO digitos';\n        $alert.style.color = 'red';\n        $alert.classList.remove('hidden');\n        setTimeout(function () {\n          $alert.classList.add('hidden');\n        }, 10000);\n      } else {\n        fetch('/register', {\n          method: 'POST',\n          body: FormData\n        }).then(function (data) {\n          return data.json();\n        }).then(function (data) {\n          if (data.refused) {\n            $alert.textContent = data.error;\n            $alert.style.color = 'red';\n            $alert.classList.remove('hidden');\n            setTimeout(function () {\n              $alert.classList.add('hidden');\n            }, 10000);\n          } else {\n            $alert.textContent = data.conf;\n            $alert.style.color = '#F7901E';\n            $alert.classList.remove('hidden');\n            setTimeout(function () {\n              $alert.classList.add('hidden');\n            }, 10000);\n          }\n        });\n      }\n    });\n    $buttonPlay.addEventListener('click', function () {\n      var formData = new FormData($form);\n      var username = formData.get('username');\n      var pass = formData.get('userpass');\n\n      if (username == '' || pass == '') {\n        $alert.textContent = 'Por favor completa todos los campos';\n        $alert.style.color = 'red';\n        $alert.classList.remove('hidden');\n        setTimeout(function () {\n          $alert.classList.add('hidden');\n        }, 10000);\n      } else if (pass.length > 4 || pass.length < 4) {\n        $alert.textContent = 'Tu pin debe contener CUATRO digitos';\n        $alert.style.color = 'red';\n        $alert.classList.remove('hidden');\n        setTimeout(function () {\n          $alert.classList.add('hidden');\n        }, 10000);\n      } else {\n        fetch('/login', {\n          method: 'POST',\n          body: formData\n        }).then(function (res) {\n          return res.json();\n        }).then(function (data) {\n          if (data.refused) {\n            $alert.textContent = data.error;\n            $alert.classList.remove('hidden');\n            setTimeout(function () {\n              $alert.classList.add('hidden');\n            }, 5000);\n          } else {\n            console.log(data); // window.location.href = `${window.origin}/login`\n          }\n        });\n      }\n    });\n    $form.addEventListener('submit', function (event) {\n      event.preventDefault();\n    });\n  };\n\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    className: \"main-container\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"form\", {\n    id: \"formdata\",\n    method: \"post\",\n    action: \"/login\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"input\", {\n    type: \"hidden\",\n    value: \"{{token}}\"\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"p\", {\n    className: \"alert hidden\"\n  }, \"Por favor completa todos los campos\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_InputItem__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    name: \"username\",\n    id: \"username\",\n    placeholder: \"Nombre del usuario\"\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    className: \"content-input\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"input\", {\n    className: \"input-item password\",\n    type: \"password\",\n    name: \"userpass\",\n    placeholder: \"Ingresa tu PIN\"\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"span\", {\n    className: \"unmask-eye show-text\",\n    id: \"showText\",\n    style: {\n      display: \"inline-block\"\n    }\n  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"button\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SendButton__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"i\", {\n      className: \"fa fa-paper-plane\",\n      \"aria-hidden\": \"true\"\n    }),\n    msg: \"Registro\"\n  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"button\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SendButton__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"i\", {\n      className: \"fa fa-play-circle\",\n      \"aria-hidden\": \"true\"\n    }),\n    msg: \"Jugar\"\n  })))));\n}\n\n//# sourceURL=webpack://technical-challenge/./src/app/components/Login.js?");
-
-/***/ }),
-
-/***/ "./src/app/components/SendButton.js":
-/*!******************************************!*\
-  !*** ./src/app/components/SendButton.js ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ SendButton)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nfunction SendButton(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    className: \"contain-button\"\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"span\", {\n    className: \"button-send\"\n  }, props.icon, \"\\xA0\", props.msg));\n}\n\n//# sourceURL=webpack://technical-challenge/./src/app/components/SendButton.js?");
-
-/***/ }),
-
 /***/ "./src/app/components/SlideBar.js":
 /*!****************************************!*\
   !*** ./src/app/components/SlideBar.js ***!
@@ -50,13 +20,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/app/index.js":
-/*!**************************!*\
-  !*** ./src/app/index.js ***!
-  \**************************/
+/***/ "./src/app/home.js":
+/*!*************************!*\
+  !*** ./src/app/home.js ***!
+  \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _components_SlideBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/SlideBar */ \"./src/app/components/SlideBar.js\");\n/* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Login */ \"./src/app/components/Login.js\");\n\n\n\n\n(0,react_dom__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_SlideBar__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), document.getElementById('root'));\n(0,react_dom__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Login__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null), document.querySelector('main'));\n\n//# sourceURL=webpack://technical-challenge/./src/app/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _components_SlideBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/SlideBar */ \"./src/app/components/SlideBar.js\");\n\n\n // import Card from \"./components/Card\"\n\n(0,react_dom__WEBPACK_IMPORTED_MODULE_1__.render)( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_SlideBar__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), document.getElementById('root')); // render(<Card/>, document.querySelector('main'));\n\n//# sourceURL=webpack://technical-challenge/./src/app/home.js?");
 
 /***/ }),
 
@@ -380,7 +350,7 @@ eval("module.exports = __webpack_require__.p + \"cacf53edb545a8117c7c.woff2\";\n
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"index": 0
+/******/ 			"home": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -403,7 +373,7 @@ eval("module.exports = __webpack_require__.p + \"cacf53edb545a8117c7c.woff2\";\n
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/app/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/app/home.js");
 /******/ 	
 /******/ })()
 ;

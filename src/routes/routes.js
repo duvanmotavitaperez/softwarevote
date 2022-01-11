@@ -2,33 +2,29 @@ const express = require('express')
 const db = require('mongoose')
 const router = express.Router()
 const multer = require('multer')
+const cookieParser = require('cookie-parser')
 const User = require('../database/models/users')
 const upload = multer({dest: '../uploads'})
 const path = require('path')
-const { useState } = require('react')
+
+router.use(cookieParser())
+
 
 router.get('/', (req, res) => {
+    res.clearCookie("user", { path: '/' })
     res.sendFile(path.resolve('src/public/index.html'))
-    console.log('test two')
 })
-router.post('/login', upload.none(), async (req, res, next) => {
 
+router.post('/login', upload.none(), async (req, res, next) => {
     let {username, userpass} = req.body
-    let addUser = new User({name: username, pin: userpass, score: 0, level: "PRINCIPIANTE"})
-    let verifyUser = await User.findOne({name: username, pin: userpass})
-    if(verifyUser){
-        res.json({refused: true, error: ""})
+    let user = await User.findOne({name: username, pin: userpass})
+    if(user){
+        console.log(user.name)
+        res.cookie('user', user.name)
+        res.json({name: user.name})
     }
     else{
-        try{
-            addUser.save()
-            res.json({conf: 'register success'})
-        }
-        catch(e){
-            console.log(e)
-            res.json({conf: 'There was an error'})
-        }
-        
+        res.json({refused: true, error: "Sus credenciales de inicio de sesión no son correctas"})
     }
     })
 router.post('/register', upload.none(), async (req, res, next) => {
@@ -46,7 +42,7 @@ router.post('/register', upload.none(), async (req, res, next) => {
         }
         catch(e){
             console.log(e)
-            res.json({conf: 'There was an error'})
+            res.json({refused: true, error: 'There was an error'})
         }
         
     }

@@ -9,6 +9,7 @@ const questions =  new Schema({
     2: {type: String, required: true},
     3: {type: String, required: true},
     4: {type: String, required: true},
+    correct: {type: String, required: true}
 })
 
 module.exports = db.model('Questions', questions)

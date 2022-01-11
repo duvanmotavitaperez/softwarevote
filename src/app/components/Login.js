@@ -7,14 +7,14 @@ export default function Login(){
     window.onload = () => {
         const $form = document.getElementById('formdata')
         const $eye = document.getElementById('showText')
-        const $textArea = document.querySelector('textarea')
         const $buttonRegister = document.querySelectorAll('.button-send')[0]
         const $buttonPlay = document.querySelectorAll('.button-send')[1]
         const $alert = document.querySelector('.alert')
-        const $password = document.querySelector('.input-item.password')
+
         $eye.addEventListener('click', () => {
             $eye.classList.toggle('show-text')
         })
+
         $buttonRegister.addEventListener('click', () => {
             const formData = new FormData($form)
             const username = formData.get('username')
@@ -35,8 +35,55 @@ export default function Login(){
                             $alert.classList.add('hidden')
                         }, 10000);
             }
-            else {
+            
+            else{
                 fetch('/register', {
+                    method: 'POST',
+                    body: FormData,
+                })
+                .then(data => data.json())
+                .then(data => {
+                    if(data.refused){
+                        $alert.textContent = data.error
+                        $alert.style.color = 'red'
+                        $alert.classList.remove('hidden')
+                        setTimeout(() => {
+                            $alert.classList.add('hidden')
+                        }, 10000);
+                    }
+                    else{
+                        $alert.textContent = data.conf
+                        $alert.style.color = '#F7901E'
+                        $alert.classList.remove('hidden')
+                        setTimeout(() => {
+                            $alert.classList.add('hidden')
+                        }, 10000);
+                    }
+                })
+            }
+        })
+        $buttonPlay.addEventListener('click', () => {
+            const formData = new FormData($form)
+            const username = formData.get('username')
+            const pass = formData.get('userpass')
+            if(username == '' || pass == ''){
+                        $alert.textContent = 'Por favor completa todos los campos'
+                        $alert.style.color = 'red'
+                        $alert.classList.remove('hidden')
+                        setTimeout(() => {
+                            $alert.classList.add('hidden')
+                        }, 10000);
+            }
+            else if(pass.length > 4 || pass.length < 4){
+                        $alert.textContent = 'Tu pin debe contener CUATRO digitos'
+                        $alert.style.color = 'red'
+                        $alert.classList.remove('hidden')
+                        setTimeout(() => {
+                            $alert.classList.add('hidden')
+                        }, 10000);
+            }
+            else {
+                fetch('/login', {
                     method: 'POST',
                     body: formData,
                 })
@@ -49,25 +96,20 @@ export default function Login(){
                             $alert.classList.add('hidden')
                         }, 5000);
                     }
-                    else if(data.conf === 'register success'){
-                        $alert.textContent = 'Registro exitoso'
-                        $alert.style.color = '#F7901E'
-                        $alert.classList.remove('hidden')
-                        setTimeout(()=>{
-                            $alert.textContent = 'Por favor ingresa tus datos y comienza el juego'
-                        }, 4000)
-                        setTimeout(() => {
-                            $alert.classList.add('hidden')
-                        }, 10000);
+                    else{
+                        console.log(data)
+                        // window.location.href = `${window.origin}/login`
                     }
                 })
             }
-            
         })
+            
+
         $form.addEventListener('submit', (event) => {
             event.preventDefault()
         })
     }
+    
      
     return(
         <div className="main-container">
@@ -90,5 +132,4 @@ export default function Login(){
                 
             </form>
         </div>
-    )
-}
+    )}
