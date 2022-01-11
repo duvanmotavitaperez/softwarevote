@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'Futura LtCn BT';
+    src:url('../fonts/FuturaBT-LightCondensed.woff2') format('woff2');
+    font-weight:         300;
+    font-style: normal;
+    font-display: swap;
+}
+:root {
+    --height-header: 4rem;
+    --primary-color: #1b3764;
+    --secondary-color: #212528;
+    --alternative-color: #F7901E;
+    --transparent-color: #00000075;
+}
+::-webkit-scrollbar {
+    background-color: transparent;
+}
+::-webkit-scrollbar-corner {
+    display: none;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+    background-color: #00000075;
+  }
+::-webkit-scrollbar-button:vertical:decrement {
+    height: 3.5rem;
+    background-color: var(--secondary-color);
+}
+::-webkit-scrollbar-thumb:active {
+     border: 1px solid #F7901E;
+  }
+
+
+.main-container {
+    overflow-x: hidden;
+}
+a {
+    text-decoration: none;
+}
+body {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+        .container-fixed {
+            overflow: hidden;
+            background-color: var(--transparent-color);
+            padding: 1rem;
+            display: flex;
+            flex-wrap: nowrap;
+            position: relative;
+        }
+            .container-move {
+                display: flex;
+                transition: all 0s;
+                flex-shrink: 0;
+            }    
+                .box-grow:active {
+                    position: relative;
+                    z-index: 100; 
+                }
+                .container-box {
+                    flex-shrink: 0;
+                    display: grid;
+                    margin: 0 10px;
+                    grid-template-columns: 300px;
+                    grid-template-rows: 300px;
+                    border: 1px solid transparent;
+                    color: #fff;
+                    background-color:transparent;
+                    border-radius: 50px;
+                    overflow: hidden;
+                    transition: all 0s ease-out;
+                    
+                }
+                    .item {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        line-height: 0px;
+                    }
+                    .item-title {
+                        display: none;
+                        flex-basis: 20%;
+                        flex-shrink: 0;
+                        overflow: hidden;
+                        background-color: transparent;
+
+                    }
+                    .item-img {
+                        background-color: var(--transparent-color);
+                        width: 100%;
+                        height: 100%;
+                    }           
+                        .item-img img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            text-rendering: optimizeLegibility;
+                        }
+
+
