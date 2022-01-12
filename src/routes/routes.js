@@ -58,24 +58,61 @@ router.post('/register', upload.none(), async (req, res, next) => {
     }
     })
 
-router.get('/min', upload.none(), async (req, res) => {
+router.post('/eval', upload.none(), async (req, res) => {
     if(req.cookies.user){
-        let data = await Questions.findOne({category:"min", questionId: randomNum()})
-        res.json(data)
+        if(req.body.level === "starting"){
+            let data = await Questions.findOne({category:"min", questionId: randomNum()})
+            res.json(data)
+        }
+        else if(req.body.level === "min"){
+            let data = await Questions.findOne({category:"min", questionId: req.body.questionId})
+            if(req.body.answer = data){
+                let data = await Questions.findOne({category:"low", questionId: randomNum()})
+                res.json(data)
+            }
+       
+        }
+        else if(req.body.level === "low"){
+            let data = await Questions.findOne({category:"low", questionId: req.body.questionId})
+            if(req.body.answer = data){
+                let data = await Questions.findOne({category:"medium", questionId: randomNum()})
+                res.json(data)
+            }
+       
+        }
+        else if(req.body.level === "medium"){
+            let data = await Questions.findOne({category:"medium", questionId: req.body.questionId})
+            if(req.body.answer = data){
+                let data = await Questions.findOne({category:"high", questionId: randomNum()})
+                res.json(data)
+            }
+       
+        }
+        else if(req.body.level === "high"){
+            let data = await Questions.findOne({category:"high", questionId: req.body.questionId})
+            if(req.body.answer = data){
+                let data = await Questions.findOne({category:"max", questionId: randomNum()})
+                res.json(data)
+            }
+       
+        }
+        else if(req.body.level === "max"){
+            let data = await Questions.findOne({category:"max", questionId: req.body.questionId})
+            if(req.body.answer = data){
+                let data = await Questions.findOne({category:"max", questionId: randomNum()})
+                res.json(data)
+            }
+       
+        }
+        else{
+            res.redirect('/')
+        }
+        
     }
     else{
         res.redirect('/')
     }
     
-}), 
-router.get('/low', upload.none(), () => {
-
-}), 
-router.get('/high', upload.none(), () => {
-
-}), 
-router.get('/max', upload.none(), () => {
-
-}), 
+})
 
 module.exports = router

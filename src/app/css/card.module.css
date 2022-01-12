@@ -25,6 +25,10 @@
     justify-content: center;
     font-family: 'Futura LtCn BT';
     font-size: 1.3rem;
+    letter-spacing: 2px;
+}
+.quetion p {
+    text-align: center;
 }
 .answers{
     width: 100%;
@@ -41,4 +45,9 @@ ul li{
 ul li label{
     font-size: 1.5rem;
     margin-left: 15px;
+}
+
+.fa.fa-play{
+    color: white;
+    font-size: 2rem;
 }

@@ -39,7 +39,7 @@ export default function Login(){
             else{
                 fetch('/register', {
                     method: 'POST',
-                    body: FormData,
+                    body: formData,
                 })
                 .then(data => data.json())
                 .then(data => {

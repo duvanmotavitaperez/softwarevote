@@ -204,3 +204,11 @@ main.register {
     left: 10px;
     bottom: 10px;
 }
+.fa.fa-play{
+    color: #fff;
+    font-size: 3rem;
+}
+.fa.fa-play:active{
+    color: #F7901E;
+    transform: scale(.9);
+}
