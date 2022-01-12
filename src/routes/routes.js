@@ -1,17 +1,14 @@
+const path = require('path')
 const express = require('express')
-const db = require('mongoose')
 const router = express.Router()
-const randomNum = require('../modules/randomNum')
 const multer = require('multer')
+const upload = multer({dest: '../uploads'})
 const cookieParser = require('cookie-parser')
 const User = require('../database/models/users')
-const Questions = require('../database/models/questions')
-const upload = multer({dest: '../uploads'})
-const path = require('path')
-const { json } = require('express')
+const evalQuestion = require('../modules/evalQuestion')
+
 
 router.use(cookieParser())
-
 
 router.get('/', (req, res) => {
     res.clearCookie("user", { path: '/' })
@@ -61,72 +58,8 @@ router.post('/register', upload.none(), async (req, res, next) => {
 
 router.post('/eval', upload.none(), async (req, res) => {
     if(req.cookies.user){
-        if(req.body.level === "starting"){
-            let data = await Questions.findOne({category:"min", questionId: randomNum()})
-            res.json({data: data, userdata: {user: req.cookies.user, score: req.cookies.score}, score: 100})
-        }
-        else if(req.body.level === "min"){
-            let data = await Questions.findOne({category:"min", questionId: req.body.questionId})
-            if(req.body.answer === data.correct){
-                let data = await Questions.findOne({category:"low", questionId: randomNum()})
-                res.json({data: data, score: 300})
-            }
-            else{
-                res.json({refused: true, error: 'respuesta erronea'})
-            }
-       
-        }
-        else if(req.body.level === "low"){
-            let data = await Questions.findOne({category:"low", questionId: req.body.questionId})
-            if(req.body.answer === data.correct){
-                let data = await Questions.findOne({category:"medium", questionId: randomNum()})
-                res.json({data: data, score: 500})
-            }
-            else{
-                res.json({refused: true, error: 'respuesta erronea'})
-            }
-       
-        }
-        else if(req.body.level === "medium"){
-            let data = await Questions.findOne({category:"medium", questionId: req.body.questionId})
-            if(req.body.answer === data.correct){
-                let data = await Questions.findOne({category:"high", questionId: randomNum()})
-                res.json({data: data, score: 700})
-            }
-            else{
-                res.json({refused: true, error: 'respuesta erronea'})
-            }
-       
-        }
-        else if(req.body.level === "high"){
-            let data = await Questions.findOne({category:"high", questionId: req.body.questionId})
-            if(req.body.answer === data.correct){
-                let data = await Questions.findOne({category:"max", questionId: randomNum()})
-                res.json({data: data, score: 900})
-            }
-            else{
-                res.json({refused: true, error: 'respuesta erronea'})
-            }
-       
-        }
-        else if(req.body.level === "max"){
-            let data = await Questions.findOne({category:"max", questionId: req.body.questionId})
-            if(req.body.answer === data.correct){
-                let data = await Questions.findOne({category:"max", questionId: randomNum()})
-                res.json({data: data, score: 1100})
-            }
-            else{
-                res.json({refused: true, error: 'respuesta erronea'})
-            }
-       
-        }
-        else{
-            res.redirect('/') 
-        }
-        
-    }
-    else{
-        res.redirect('/')
+        const question = await evalQuestion(req.body)
+        res.json(question)
     }
     
 })

@@ -7,7 +7,7 @@ export default function ExitButton(){
     return(
         <>
             <div className={styles['contain-exit']}>
-                <i class="fa fa-sign-out" aria-hidden="true" onClick={exit}></i>
+                <i className="fa fa-sign-out" aria-hidden="true" onClick={exit}></i>
             </div>
         </>
     )
