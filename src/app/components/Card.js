@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import styles from '../css/card.module.css'
-
+import ExitButton from "./ExitButton";
 export default function Login(){
         const [question, setQuestion] = useState('Bienvenido')
+        const [userData, setData] = useState('')
+        const [gameScore, setScore] = useState(0)
         window.onload = () => {
             const formInit = new FormData()
             formInit.set('level', "starting")
@@ -12,32 +14,47 @@ export default function Login(){
             })
             .then(data => data.json())
             .then(data => {
-                setQuestion(data)
+                setQuestion(data.data)
+                setData(data.userdata)
             })
         }
         const send = function (){
             let $form = document.querySelector('form')
             const formData = new FormData($form)
-            console.log(formData.get('answer'))
             fetch('/eval',{
                 method: 'POST',
                 body: formData,
             })
             .then(data => data.json())
             .then(data => {
-                setQuestion(data)
-                const $answer1 = document.getElementById('choice_1')
-                const $answer2 = document.getElementById('choice_2')
-                const $answer3 = document.getElementById('choice_3')
-                const $answer4 = document.getElementById('choice_4')
-                $answer1.checked = false
-                $answer2.checked = false
-                $answer3.checked = false
-                $answer4.checked = false
+                setQuestion(data.data)
+                if(data.refused){
+                    alert(data.error)
+                }
+                else{
+                    const $answer1 = document.getElementById('choice_1')
+                    const $answer2 = document.getElementById('choice_2')
+                    const $answer3 = document.getElementById('choice_3')
+                    const $answer4 = document.getElementById('choice_4')
+                    $answer1.checked = false
+                    $answer2.checked = false
+                    $answer3.checked = false
+                    $answer4.checked = false
+                    setScore(gameScore + data.score)
+                } 
+                
             })
         }
         
     return(
+        <>
+        <ExitButton/>
+        <div>
+            <input value={`User: ${userData.user}`.toUpperCase()} className={styles['username']} name="userLabel" type="text" id="choice_1" disabled/>
+            <input value={`Global Score: ${userData.score}`.toUpperCase()} className={styles['global-score']} name="scoreLabel" type="text" id="choice_1" disabled/>
+            <input value={`Game Score: ${gameScore}`.toUpperCase()} className={styles['game-score']} name="scoreLabel" type="text" id="choice_1" disabled/>
+            <input value={`Category: ${question["category"]}`.toUpperCase()} className={styles['level']} name="levelLabel" type="text" id="choice_1" disabled/>
+        </div>
         <div className={styles["main-container"]}>
                 <div className={styles["quetion"]}>
                     <p>{question.question}</p>
@@ -74,5 +91,6 @@ export default function Login(){
                    </div>
                 </div>
             </div>
+            </>
     )
 }

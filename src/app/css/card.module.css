@@ -51,3 +51,63 @@ ul li label{
     color: white;
     font-size: 2rem;
 }
+
+.contain-exit {
+    width: 45px;
+    height: 68px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.username{
+    position: fixed;
+    top: 10px;
+    left: 50px;
+    width: 500px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: 'Futura LtCn BT';
+    font-size: 1.5em;
+    letter-spacing: 2px;
+}
+.global-score{
+    position: fixed;
+    top: 40px;
+    left: 50px;
+    width: 500px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: 'Futura LtCn BT';
+    font-size: 1.5em;
+    letter-spacing: 2px;
+}
+.game-score{
+    position: fixed;
+    top: 75px;
+    left: 50px;
+    width: 500px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: 'Futura LtCn BT';
+    font-size: 1.5em;
+    letter-spacing: 2px;
+}
+
+.level{
+    position: fixed;
+    top: 110px;
+    left: 50px;
+    width: 500px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: 'Futura LtCn BT';
+    font-size: 1.5em;
+    letter-spacing: 2px;
+}
