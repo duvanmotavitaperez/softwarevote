@@ -26,6 +26,14 @@ export default function Login(){
             .then(data => data.json())
             .then(data => {
                 setQuestion(data)
+                const $answer1 = document.getElementById('choice_1')
+                const $answer2 = document.getElementById('choice_2')
+                const $answer3 = document.getElementById('choice_3')
+                const $answer4 = document.getElementById('choice_4')
+                $answer1.checked = false
+                $answer2.checked = false
+                $answer3.checked = false
+                $answer4.checked = false
             })
         }
         
@@ -41,8 +49,7 @@ export default function Login(){
                                 <li>
                                     <input value={question["1"]} name="answer" type="radio" id="choice_1"/>
                                     <label htmlFor="choice_1">{question["1"]}</label>
-                                </li>
-                                <li>
+                                </li>                                <li>
                                     <input value={question["2"]} name="answer" type="radio" id="choice_2"/>
                                     <label htmlFor="choice_2">{question["2"]}</label>
                                 </li>
