@@ -82,6 +82,9 @@ router.post('/eval', upload.none(), async (req, res) => {
                 let data = await Questions.findOne({category:"medium", questionId: randomNum()})
                 res.json({data: data, score: 500})
             }
+            else{
+                res.json({refused: true, error: 'respuesta erronea'})
+            }
        
         }
         else if(req.body.level === "medium"){
@@ -89,6 +92,9 @@ router.post('/eval', upload.none(), async (req, res) => {
             if(req.body.answer === data.correct){
                 let data = await Questions.findOne({category:"high", questionId: randomNum()})
                 res.json({data: data, score: 700})
+            }
+            else{
+                res.json({refused: true, error: 'respuesta erronea'})
             }
        
         }
@@ -98,6 +104,9 @@ router.post('/eval', upload.none(), async (req, res) => {
                 let data = await Questions.findOne({category:"max", questionId: randomNum()})
                 res.json({data: data, score: 900})
             }
+            else{
+                res.json({refused: true, error: 'respuesta erronea'})
+            }
        
         }
         else if(req.body.level === "max"){
@@ -105,6 +114,9 @@ router.post('/eval', upload.none(), async (req, res) => {
             if(req.body.answer === data.correct){
                 let data = await Questions.findOne({category:"max", questionId: randomNum()})
                 res.json({data: data, score: 1100})
+            }
+            else{
+                res.json({refused: true, error: 'respuesta erronea'})
             }
        
         }
