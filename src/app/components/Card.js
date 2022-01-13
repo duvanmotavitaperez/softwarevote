@@ -11,7 +11,6 @@ export default function Login(){
             
             const formInit = new FormData()
             formInit.set('level', "starting")
-
             //Obtine la primera ronda de preguntas
             fetch('/eval',{
                 method: 'POST',
@@ -19,7 +18,6 @@ export default function Login(){
             })
             .then(data => data.json())
             .then(data => {
-                console.log(data)
                 setQuestion(data.data)
                 setData(data.userdata)
             })
@@ -33,22 +31,37 @@ export default function Login(){
             })
             .then(data => data.json())
             .then(data => {
-                setQuestion(data.data)
                 if(data.refused){
-                    alert(data.error)
-                    $cardGame.style.display = 'none'
-                    
+                    window.location.href = `${window.origin}/finish`
+                }
+                else if(data.end){
+                        let $gameScore = document.getElementById('gameScore').value.split(':')[1]
+                        let $globalScore = document.getElementById('globalScore').value.split(':')[1]
+                        let score = parseInt($gameScore) + parseInt($globalScore) + data.score
+                        console.log(score)
+                        let formData = new FormData()
+                        formData.set('score', score)
+                        fetch('/savedata', {
+                            method: 'POST',
+                            body: formData,
+                        })
+                        .then((data) => data.json())
+                        .then(data => {
+                            if(data.conf){
+                                window.location.href = `${window.origin}/winner`
+                            }
+                            else{
+                                alert("Ha ocurrido un error, por favor intentalo nuevamente")
+                            }  
+                        })
                 }
                 else{
-                    const $answer1 = document.getElementById('choice_1')
-                    const $answer2 = document.getElementById('choice_2')
-                    const $answer3 = document.getElementById('choice_3')
-                    const $answer4 = document.getElementById('choice_4')
-                    $answer1.checked = false
-                    $answer2.checked = false
-                    $answer3.checked = false
-                    $answer4.checked = false
+                    setQuestion(data.data)
                     setScore(gameScore + data.score)
+                    document.getElementById('choice_1').checked = false
+                    document.getElementById('choice_2').checked = false
+                    document.getElementById('choice_3').checked = false
+                    document.getElementById('choice_4').checked = false
                 } 
                 
             })
@@ -60,8 +73,8 @@ export default function Login(){
             <div id="cardGame">
                 <div>
                     <input value={`User: ${userData.user}`.toUpperCase()} className={styles['username']} name="userLabel" type="text" id="username" disabled/>
-                    <input value={`Global Score: ${userData.score}`.toUpperCase()} className={styles['global-score']} name="scoreLabel" type="text" id="global-score" disabled/>
-                    <input value={`Game Score: ${gameScore}`.toUpperCase()} className={styles['game-score']} name="scoreLabel" type="text" id="game-score" disabled/>
+                    <input value={`Global Score: ${userData.score}`.toUpperCase()} className={styles['global-score']} name="scoreLabel" type="text" id="globalScore" disabled/>
+                    <input value={`Game Score: ${gameScore}`.toUpperCase()} className={styles['game-score']} name="scoreLabel" type="text" id="gameScore" disabled/>
                     <input value={`Category: ${question["category"]}`.toUpperCase()} className={styles['level']} name="levelLabel" type="text" id="level" disabled/>
                 </div>
                 <div className={styles["main-container"]}>

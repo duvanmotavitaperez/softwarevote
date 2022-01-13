@@ -1,4 +1,4 @@
-# @Developed by DUVAN MOTAVITA PEREZ
+# @Developed By DUVAN MOTAVITA PEREZ
 
 # CHALLENGE - CONCURSO DE PREGUNTAS Y RESPUESTAS
  
@@ -11,6 +11,7 @@ En este reto aposte por una aplicación web, utilizando javascript como lenguage
 # Para iniciar esta aplicación es indispenzable instalar **MONGODB Y NODE JS**, hecho esto se deberá abrir una terminal en la carpeta principal, una vez allí se debera ejecutar el comando "npm run start".
 
 ***
+# Las preguntas se guardarán automaticamente una vez se inicie la aplicación y mongodb
 
 # Carpeta app 
     Esta carpeta contiene todos los componentes react

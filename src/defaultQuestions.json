@@ -135,7 +135,7 @@
             "2":"Diez",
             "3":"Trece",
             "4":"Nueve",
-            "correct":"Titán"  
+            "correct":"Doce"  
         }, 
         {
             "category": "medium", 
@@ -241,7 +241,7 @@
             "2":"1864",
             "3":"1865",
             "4":"1860",
-            "correct":"8"   
+            "correct":"1864"   
         }, 
         {
             "category": "max", 
