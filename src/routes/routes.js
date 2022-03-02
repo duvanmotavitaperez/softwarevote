@@ -6,7 +6,6 @@ const upload = multer({dest: '../uploads'})
 const cookieParser = require('cookie-parser')
 const User = require('../database/models/users')
 const evalQuestion = require('../modules/evalQuestion')
-const saveDta = require('../modules/saveUserData')
 const saveData = require('../modules/saveUserData')
 
 

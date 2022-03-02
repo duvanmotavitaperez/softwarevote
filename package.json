@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "build": "webpack --mode production"
+    "build": "webpack --mode development"
   },
   "keywords": [],
   "author": "",
@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "css-loader": "^6.5.1",
+    "csv-parser": "^3.0.0",
     "morgan": "^1.10.0",
     "style-loader": "^3.3.1"
   }
