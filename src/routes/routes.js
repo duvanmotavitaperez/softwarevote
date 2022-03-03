@@ -39,8 +39,9 @@ const getsection = require('../modules/getSection')
             res.redirect('/')
         }
     })
-    router.post('/voter', async (req, res)=>{
+    router.post('/voter', upload.none(),async (req, res)=>{
         let {username} = req.body
+        console.log(username)
         if(req.cookies.user && req.cookies.role){
             let user = await Voter.findOne({username: username})
             if(user.username && !user.uservote){
@@ -61,23 +62,23 @@ const getsection = require('../modules/getSection')
             res.redirect('/')
         }
     })
-    // router.get(`/${list[0].id}`, (req, res) => {
-    //     if(req.cookies.user && req.cookies.username){
-    //         res.sendFile(path.resolve(`src/public/${list[0].id}.html`))
-    //     }
-    //     else{
-    //         res.redirect('/')
-    //     }
-    // })
-    // router.get(`/${list[1].id}`, (req, res) => {
-    //     if(req.cookies.user && req.cookies.username){
-    //         res.sendFile(path.resolve(`src/public/${list[1].id}.html`))
-    //     }
-    //     else{
-    //         res.redirect('/')
-    //     }
-    // })
-    router.get('/sections', async (req, res) => {
+    router.get(`/${list[0].id}`, upload.none(), (req, res) => {
+        if(req.cookies.user && req.cookies.username){
+            res.sendFile(path.resolve(`src/public/${list[0].sectionname}.html`))
+        }
+        else{
+            res.redirect('/')
+        }
+    })
+    router.get(`/${list[1].id}`, upload.none(), (req, res) => {
+        if(req.cookies.user && req.cookies.username){
+            res.sendFile(path.resolve(`src/public/${list[1].sectionname}.html`))
+        }
+        else{
+            res.redirect('/')
+        }
+    })
+    router.get('/sections', upload.none(), async (req, res) => {
         data = await Sections.find({},{sectionname: 1})
         if(data){
             res.json({data: data}) 

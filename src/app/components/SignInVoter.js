@@ -1,9 +1,9 @@
 import React from "react";
 import InputItem from "./InputItem";
+import SendButton from './SendButton'
 export default function Voters(){
     window.onload = () =>  {
         const $form = document.getElementById('formdata')
-        const $eye = document.getElementById('showText')
         const $buttonin = document.querySelector('.button-send')
         const $alert = document.querySelector('.alert')
         $buttonin.addEventListener('click', () => {
@@ -24,6 +24,7 @@ export default function Voters(){
                 })
                 .then(res => res.json())
                 .then(data => {
+                    console.log(data)
                     if(data.refused){
                         $alert.textContent = data.error
                         $alert.classList.remove('hidden')
@@ -36,6 +37,9 @@ export default function Voters(){
                     }
                 })
             }
+        })
+        $form.addEventListener('submit', (event) => {
+            event.preventDefault()
         })
     }  
     return(
