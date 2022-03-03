@@ -27,7 +27,7 @@ router.post('/login', upload.none(), async (req, res, next) => {
         res.json({name: user.name})
     }
     else{
-        res.json({refused: true, error: "Sus credenciales de inicio de sesión no son correctas"})
+        res.json({refused: true, error: "Sus credenciales de inicio de sesión no son correctas."})
     }
     })
 
