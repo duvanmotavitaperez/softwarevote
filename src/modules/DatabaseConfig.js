@@ -1,5 +1,6 @@
 const Users = require('../database/models/users')
 const Sections = require('../database/models/sections')
+const Voter = require('../database/models/voter')
 const parser = require('csv-parser')
 const fs = require('fs')
 const path = require('path')
@@ -57,7 +58,7 @@ class DatabaseConfig{
         }))
         .on('data', data => {
             try{
-                this.voter = new Sections({username: data.username, uservote: false})
+                this.voter = new Voter({username: data.username, uservote: false})
                 this.voter.save()
             }catch(e){
                 console.log(e)
