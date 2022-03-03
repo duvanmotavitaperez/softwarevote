@@ -4,7 +4,7 @@ export default function SendButton(props){
     return(
         <div className="contain-button">
             <span className="button-send">
-                {props.icon}&nbsp;{props.msg}
+                {props.icon}
             </span>
         </div>  
     )

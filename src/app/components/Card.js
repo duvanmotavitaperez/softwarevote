@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from '../css/card.module.css'
 import ExitButton from "./ExitButton";
-export default function Login(){
+export default function Card(){
 
         const [question, setQuestion] = useState('Bienvenido')
         const [userData, setData] = useState('')
@@ -69,51 +69,11 @@ export default function Login(){
         
     return(
         <>
-            <ExitButton/>
-            <div id="cardGame">
-                <div>
-                    <input value={`User: ${userData.user}`.toUpperCase()} className={styles['username']} name="userLabel" type="text" id="username" disabled/>
-                    <input value={`Global Score: ${userData.score}`.toUpperCase()} className={styles['global-score']} name="scoreLabel" type="text" id="globalScore" disabled/>
-                    <input value={`Game Score: ${gameScore}`.toUpperCase()} className={styles['game-score']} name="scoreLabel" type="text" id="gameScore" disabled/>
-                    <input value={`Category: ${question["category"]}`.toUpperCase()} className={styles['level']} name="levelLabel" type="text" id="level" disabled/>
+            <section>
+                <div className={styles["main-div"]}>
+
                 </div>
-                <div className={styles["main-container"]}>
-                        <div className={styles["quetion"]}>
-                            <p>{question.question}</p>
-                        </div>
-                        <div className={styles["answers"]}>
-                        <div className="contain-answers">
-                            <form>
-                                    <ul>
-                                        <li>
-                                            <input value={question["1"]} name="answer" type="radio" id="choice_1"/>
-                                            <label htmlFor="choice_1">{question["1"]}</label>
-                                        </li>                                <li>
-                                            <input value={question["2"]} name="answer" type="radio" id="choice_2"/>
-                                            <label htmlFor="choice_2">{question["2"]}</label>
-                                        </li>
-                                        <li>
-                                            <input value={question["3"]} name="answer" type="radio" id="choice_3"/>
-                                            <label htmlFor="choice_3">{question["3"]}</label>
-                                        </li>
-                                        <li>
-                                            <input value={question["4"]} name="answer" type="radio" id="choice_4"/>
-                                            <input value={question["category"]} name="level" type="hidden" id="level"/>
-                                            <input value={question["questionId"]} name="questionId" type="hidden" id="level"/>
-                                            <label htmlFor="choice_4">{question["4"]}</label>
-                                        </li>
-                                    </ul>
-                            </form>
-                            
-                        </div>
-                        <div className="contain-button">
-                            <button onClick={send} >
-                                <i className="fa fa-play" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                        </div>
-                    </div>
-            </div>
+            </section>
         </>
     )
 }
