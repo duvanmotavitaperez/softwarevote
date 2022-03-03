@@ -157,12 +157,22 @@ main.register {
                     margin: 0;
                 }
                 .contain-button span {
+                    font-size: 3rem;
                     margin-top: 10px;
-                    padding: 0.3em 0.35em;
                     border-radius: 7%;
                     margin: 10px;
-                    border: 1px solid #fff;
+                    
                 }
+                  .fa.fa-paper-plane {
+                     padding-right: 10px;
+                  }
+                  .fa.fa-paper-plane:hover {
+                     color: #555353;
+                     padding-right: 10px;
+                  }
+                  .fa.fa-paper-plane:active {
+                     color: #F7901E;
+                  }
                 .contain-button span:active {
                   color: var(--alternative-color);
                   transform: scale(.1);
@@ -199,7 +209,11 @@ main.register {
             .alert.hidden {
                 visibility: hidden;
             }
-            
+            .input-choice + label{
+                font-family: 'Futura LtCn BT';
+                letter-spacing: 1px;
+                font-size: 1.5rem;
+            }
 .ctransparentit {
     position: fixed;
     left: 10px;

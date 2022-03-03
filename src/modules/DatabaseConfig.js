@@ -1,36 +1,43 @@
+const Users = require('../database/models/users')
+const parser = require('csv-parser')
 const fs = require('fs')
-const Questions = require('../database/models/questions')
-const path = require("path")
+const path = require('path')
 class DatabaseConfig{
-    saveData(confirmation){
-        if(confirmation){
-            fs.readFile(path.resolve('src/defaultQuestions.json'), (err, data) => {
-                if (err) throw err
-                let questions = JSON.parse(data)
-                Object.keys(questions).forEach( category => {
-                        questions[category].forEach(question => {
-                            let addQuestion = new Questions({category: question.category, question: question.question,questionId: question.questionId, 1: question["1"], 2: question["2"], 3: question["3"], 4: question["4"], correct: question.correct})
-                            addQuestion.save()
-                             
-                        }) 
-                })
-                console.log("The question bank has been created")
-            })
-        }
-    }
 
+    saveData(){
+        this.file = fs.createReadStream(path.resolve('users.csv'))
+        this.file
+        .pipe(parser({
+            separator: ';',
+        }))
+        .on('data', data => {
+            try{
+                this.user = new Users({name: data.name, password: data.password, role: data.role})
+                this.user.save()
+                console.log('Los datos de usuario se han guardado corretamente.')
+            }catch(e){
+                console.log(e)
+            }
+        })
+        .on('end',  () => {
+                fs.unlink(path.resolve('users.csv'), (e) => {
+                    if (e) throw e
+                    console.log("Datos procesados correctamente. ")
+                }) 
+        })
+        
+    }
     searchData(){
-        Questions.findOne({category: "min"})
+        Users.findOne({rol: "admin"})
         .then(data => {
             if(!data){
-                this.saveData(true)
+                this.saveData()
             } 
         })
         .catch(e => console.log(e))
     }
-
-    
 }
 
 let ins = new DatabaseConfig()
+
 module.exports = ins.searchData()

@@ -1,9 +1,8 @@
 module.exports = {
+    mode: 'development',
     entry: { 
       index: '/src/app/index.js',
       home: '/src/app/home.js',
-      gameOver: '/src/app/gameOver.js',
-      winner: '/src/app/winner.js',
     },
     output: {
       path: __dirname + '/src/public/js',
