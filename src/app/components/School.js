@@ -9,12 +9,6 @@ export default function Card(){
             const $card = document.querySelectorAll('.box')
             const formData = new FormData()
             $buttonin.addEventListener('click', () => {
-                if(formData.get('id') == null || formData.get('answer') == null){
-                    console.log(formData.get('id'))
-                    console.log("In if stament")
-                    alert('Hay un error con el envío del formualrio, la página se recargará una vez más')
-                    window.location.href = window.origin
-                }
                 fetch('/procesar', {
                     method: 'POST',
                     body: formData

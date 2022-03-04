@@ -17,7 +17,7 @@ const getsection = require('../modules/getSection')
         res.clearCookie("user", { path: '/' })
         res.clearCookie("role", { path: '/' })
         res.clearCookie("section", { path: '/' })
-        res.sendFile(path.resolve('src/public/Index.html'))
+        res.sendFile(path.resolve('src/public/index.html'))
     })
 
     router.post('/login', upload.none(), async (req, res, next) => {

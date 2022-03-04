@@ -74,7 +74,7 @@ section {
                 display: none;
          }
          .button-send:active{
-             color: #F7901E;
+             color: #162F54;
          }
         .container-box.box-one {
             background-image: url("../../public/media/primaria/image1.jpg");
@@ -131,10 +131,10 @@ section {
             bottom: 0;
         }
         #send:active {
-            color: #F7901E;
+            color: #162F54;
         }
         button{
-            color: white;
+            color: #F7901E;
             font-size: 5rem;
             background-color: transparent;
             border: none;
