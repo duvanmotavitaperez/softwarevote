@@ -2,8 +2,10 @@ module.exports = {
     mode: 'development',
     entry: { 
       index: '/src/app/index.js',
-      home: '/src/app/home.js',
+      // home: '/src/app/home.js',
       voter: '/src/app/voter.js',
+      middleschool: '/src/app/middleschool.js',
+      highschool: '/src/app/highschool.js',
     },
     output: {
       path: __dirname + '/src/public/js',

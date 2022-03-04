@@ -1,3 +1,4 @@
+const db = require('../database/connect')
 const Users = require('../database/models/users')
 const Sections = require('../database/models/sections')
 const Voter = require('../database/models/voter')
@@ -82,4 +83,4 @@ class DatabaseConfig{
 
 let ins = new DatabaseConfig()
 
-module.exports = ins.searchData()
+ins.searchData()

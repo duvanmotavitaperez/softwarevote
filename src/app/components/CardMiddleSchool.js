@@ -71,7 +71,7 @@ export default function Card(){
         <>
             <section>
                 <div className={styles["main-div"]}>
-
+                    
                 </div>
             </section>
         </>

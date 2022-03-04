@@ -1,6 +1,5 @@
 const express = require('express')
 const db = require('./database/connect')
-require('./modules/DatabaseConfig')
 const ip = require('./modules/getIpAddress')
 const morgan = require('morgan')
 const path = require('path')
