@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 import SlideBar from   "./components/SlideBar";
-import Card from "./components/CardHighSchool"
+import Card from "./components/School"
 
-render(<SlideBar/>, document.getElementById('root'));
-render(<Card/>, document.querySelector('main'));  
+render(<SlideBar/>, document.querySelector('main'));
+render(<Card/>, document.querySelector('section'));  

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from '../css/card.module.css'
+import styles from '../css/school.module.css'
 import SendButton from "./SendButton";
 import ExitButton from "./ExitButton";
 export default function Card(){
@@ -32,6 +32,8 @@ export default function Card(){
                             $checkbox5.classList.add(`${styles['hidden']}`)
                             let $checkbox6 = $card[5].querySelector('.checkbox')
                             $checkbox6.classList.add(`${styles['hidden']}`)
+                            let $checkbox7 = $card[6].querySelector('.checkbox')
+                            $checkbox7.classList.add(`${styles['hidden']}`)
                         }
                         else if(i == 1){
                             let $checkbox1 = $card[1].querySelector('.checkbox')
@@ -46,6 +48,8 @@ export default function Card(){
                             $checkbox5.classList.add(`${styles['hidden']}`)
                             let $checkbox6 = $card[5].querySelector('.checkbox')
                             $checkbox6.classList.add(`${styles['hidden']}`)
+                            let $checkbox7 = $card[6].querySelector('.checkbox')
+                            $checkbox7.classList.add(`${styles['hidden']}`)
                         }
                         else if(i == 2){
                             let $checkbox1 = $card[2].querySelector('.checkbox')
@@ -60,6 +64,8 @@ export default function Card(){
                             $checkbox5.classList.add(`${styles['hidden']}`)
                             let $checkbox6 = $card[5].querySelector('.checkbox')
                             $checkbox6.classList.add(`${styles['hidden']}`)
+                            let $checkbox7 = $card[6].querySelector('.checkbox')
+                            $checkbox7.classList.add(`${styles['hidden']}`)
                         }
                         else if(i == 3){
                             let $checkbox1 = $card[3].querySelector('.checkbox')
@@ -74,6 +80,8 @@ export default function Card(){
                             $checkbox5.classList.add(`${styles['hidden']}`)
                             let $checkbox6 = $card[5].querySelector('.checkbox')
                             $checkbox6.classList.add(`${styles['hidden']}`)
+                            let $checkbox7 = $card[6].querySelector('.checkbox')
+                            $checkbox7.classList.add(`${styles['hidden']}`)
                         }
                         else if(i == 4){
                             let $checkbox1 = $card[4].querySelector('.checkbox')
@@ -88,6 +96,8 @@ export default function Card(){
                             $checkbox5.classList.add(`${styles['hidden']}`)
                             let $checkbox6 = $card[5].querySelector('.checkbox')
                             $checkbox6.classList.add(`${styles['hidden']}`)
+                            let $checkbox7 = $card[6].querySelector('.checkbox')
+                            $checkbox7.classList.add(`${styles['hidden']}`)
                         }
                         else if(i == 5){
                             let $checkbox1 = $card[5].querySelector('.checkbox')
@@ -102,6 +112,24 @@ export default function Card(){
                             $checkbox5.classList.add(`${styles['hidden']}`)
                             let $checkbox6 = $card[4].querySelector('.checkbox')
                             $checkbox6.classList.add(`${styles['hidden']}`)
+                            let $checkbox7 = $card[6].querySelector('.checkbox')
+                            $checkbox7.classList.add(`${styles['hidden']}`)
+                        }
+                        else if(i == 6){
+                            let $checkbox1 = $card[6].querySelector('.checkbox')
+                            $checkbox1.classList.remove(`${styles['hidden']}`)
+                            let $checkbox2 = $card[1].querySelector('.checkbox')
+                            $checkbox2.classList.add(`${styles['hidden']}`)
+                            let $checkbox3 = $card[2].querySelector('.checkbox')
+                            $checkbox3.classList.add(`${styles['hidden']}`)
+                            let $checkbox4 = $card[3].querySelector('.checkbox')
+                            $checkbox4.classList.add(`${styles['hidden']}`)
+                            let $checkbox5 = $card[0].querySelector('.checkbox')
+                            $checkbox5.classList.add(`${styles['hidden']}`)
+                            let $checkbox6 = $card[4].querySelector('.checkbox')
+                            $checkbox6.classList.add(`${styles['hidden']}`)
+                            let $checkbox7 = $card[5].querySelector('.checkbox')
+                            $checkbox7.classList.add(`${styles['hidden']}`)
                         }
                     
                 })
@@ -132,7 +160,10 @@ export default function Card(){
                         <div className={`${styles["container-box"]} ${styles["box-five"]} box`} data-name="answer" data-id="choice_5" data-value="5">
                              <div className={`${styles['over']} checkbox ${styles['hidden']}`}><i class="fa fa-check" aria-hidden="true"></i></div>
                         </div>
-                        <div className={`${styles["container-box"]} ${styles["box-six"]} box`} data-name="answer" data-id="choice_6" data-value="0">
+                        <div className={`${styles["container-box"]} ${styles["box-six"]} box`} data-name="answer" data-id="choice_6" data-value="6">
+                             <div className={`${styles['over']} checkbox ${styles['hidden']}`}><i class="fa fa-check" aria-hidden="true"></i></div>
+                        </div>
+                        <div className={`${styles["container-box"]} ${styles["box-seven"]} box`} id={styles['blank']} data-name="answer" data-id="choice_7" data-value="0">
                              <div className={`${styles['over']} checkbox ${styles['hidden']}`}><i class="fa fa-check" aria-hidden="true"></i></div>
                         </div>
                 </form>

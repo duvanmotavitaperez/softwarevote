@@ -45,7 +45,7 @@ section {
         width: 100%;
         height: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
     }
@@ -53,23 +53,13 @@ section {
             flex-shrink: 0;
             width: 300px;
             height: 300px;
-            border: 1px solid #F7901E;
+            border: 3px solid #F7901E;
             border-radius: 50px;
             overflow: hidden;
             transition: all 0s ease-out;
             justify-content: center;
             margin: 5px;
         }
-         .container-box  .over {
-                width: 300px;
-                height: 300px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 3rem;
-                text-align: center;
-                background-color: var(--transparent-color);
-         }
          .container-box  .over {
                 width: 300px;
                 height: 300px;
@@ -87,32 +77,37 @@ section {
              color: #F7901E;
          }
         .container-box.box-one {
-            background-image: url("../../public/media/bachillerato/image1.jpg");
+            background-image: url("../../public/media/primaria/image1.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
         .container-box.box-two {
-            background-image: url("../../public/media/bachillerato/image2.jpg");
+            background-image: url("../../public/media/primaria/image2.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
         .container-box.box-three {
-            background-image: url("../../public/media/bachillerato/image3.jpg");
+            background-image: url("../../public/media/primaria/image3.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
         .container-box.box-four {
-            background-image: url("../../public/media/bachillerato/image4.jpg");
+            background-image: url("../../public/media/primaria/image4.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
         .container-box.box-five {
-            background-image: url("../../public/media/bachillerato/image5.jpg");
+            background-image: url("../../public/media/primaria/image5.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
         .container-box.box-six {
-            background-image: url("../../public/media/voto en blanco.jpg");
+            background-image: url("../../public/media/primaria/image6.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container-box.box-seven {
+            background-image: url("../../public/media/Voto en blanco.jpg");
             background-repeat: no-repeat;
             background-size: cover;
         }
@@ -127,10 +122,13 @@ section {
                 object-fit: fill;
                 text-rendering: optimizeLegibility;
             }
+            #blank {
+                object-fit: cover;
+            }
         #send {
             position: absolute;
-            right: 50px;
-            bottom: 50px;
+            right: 0;
+            bottom: 0;
         }
         #send:active {
             color: #F7901E;
