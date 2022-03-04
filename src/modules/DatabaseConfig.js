@@ -2,6 +2,7 @@ const db = require('../database/connect')
 const Users = require('../database/models/users')
 const Sections = require('../database/models/sections')
 const Voter = require('../database/models/voter')
+const Candidate = require('../database/models/candidates')
 const parser = require('csv-parser')
 const fs = require('fs')
 const path = require('path')
@@ -32,6 +33,23 @@ class DatabaseConfig{
                 // }) 
                 console.log("Datos de usuario procesados correctamente. ")
         })
+        this.candidates = fs.createReadStream(path.resolve('candidates.csv'))
+        this.candidates
+            .pipe(parser({
+                separator: ';',
+            }))
+            .on('data', data => {
+                console.log(data)
+                try{
+                    this.candidate = new Candidate({id: data.id, personero: data.personero, formula: data.formula, section: data.section, votes: 0})
+                    this.candidate.save()
+                }catch(e){
+                    console.log(e)
+                }
+            })
+            .on('end',  () => {
+                console.log("Datos datos de los candidatos fueron procesados correctamente. ")
+            })
         
 
         this.sections = fs.createReadStream(path.resolve('sections.csv'))

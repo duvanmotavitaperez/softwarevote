@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser')
 const User = require('../database/models/users')
 const Voter = require('../database/models/voter')
 const Sections = require('../database/models/sections')
+const Candidate = require('../database/models/candidates')
 const getsection = require('../modules/getSection')
 
 !async function start(){
@@ -14,6 +15,8 @@ const getsection = require('../modules/getSection')
     router.use(cookieParser())
     router.get(`/`, (req, res) => {
         res.clearCookie("user", { path: '/' })
+        res.clearCookie("role", { path: '/' })
+        res.clearCookie("section", { path: '/' })
         res.sendFile(path.resolve('src/public/Index.html'))
     })
 
@@ -33,15 +36,15 @@ const getsection = require('../modules/getSection')
         })
     router.get('/voter', (req, res)=>{
         if(req.cookies.user && req.cookies.role){
+            res.clearCookie('username', { path: '/' })
             res.sendFile(path.resolve(`src/public/votersignin.html`))
         }
         else{
             res.redirect('/')
         }
     })
-    router.post('/voter', upload.none(),async (req, res)=>{
+    router.post('/voter', upload.none(), async (req, res, next)=>{
         let {username} = req.body
-        console.log(username)
         if(req.cookies.user && req.cookies.role){
             let user = await Voter.findOne({username: username})
             if(user.username && !user.uservote){
@@ -55,7 +58,7 @@ const getsection = require('../modules/getSection')
                 
             }
             else{
-                res.json({refused: true, error: "Sus credenciales de inicio de sesión no son correctas."})
+                res.json({refused: true, error: "Ya tines un voto registrado."})
             }
         }
         else{
@@ -78,6 +81,22 @@ const getsection = require('../modules/getSection')
             res.redirect('/')
         }
     })
+    router.post('/procesar', upload.none(), async (req, res) => {
+        let id = parseInt(req.body.id)
+        if( id == 0){
+            data = await Candidate.findOneAndUpdate({id: parseInt(req.body.id), section: "Both"}, {$inc: {votes: 1}})
+        }
+        else{
+            data = await Candidate.findOneAndUpdate({id: id, section: req.cookies.section}, {$inc: {votes: 1}})
+        }
+        if(data){
+            user = await Voter.findOneAndUpdate({username: req.cookies.username}, {$set: {uservote: true}})
+            res.json({url: "voter"})
+        }
+        else{
+            res.json({refused: true, error: "El canditato no ha sido encontrado."})
+        }
+    })
     router.get('/sections', upload.none(), async (req, res) => {
         data = await Sections.find({},{sectionname: 1})
         if(data){
@@ -88,10 +107,7 @@ const getsection = require('../modules/getSection')
         }
         
     })
-    router.post('/processs', () => {
-        
-    })
-   
+    
     router.post('/home', upload.none(), async (req, res) => {
             if(req.cookies.user){
                 let conf = await saveData(req.body.score, req.cookies.user)

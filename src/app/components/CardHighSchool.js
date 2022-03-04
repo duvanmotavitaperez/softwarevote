@@ -4,16 +4,31 @@ import SendButton from "./SendButton";
 import ExitButton from "./ExitButton";
 export default function Card(){
 
-        const [question, setQuestion] = useState('')
-        const [userData, setData] = useState('')
         const $buttonin = document.querySelector('.button-send')
         window.onload = () => {
             const $buttonin = document.querySelector('.contain-button')
             const $card = document.querySelectorAll('.box')
             const formData = new FormData()
             $buttonin.addEventListener('click', () => {
-                console.log(formData.get('id'))
-                console.log(formData.get('answer'))
+                if(formData.get('id') == null || formData.get('answer') == null){
+                    alert('Hay un error con el envío del formualrio, la página se recargará una vez más')
+                    window.location.href = window.origin
+                }
+                fetch('/procesar', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.refused){
+                        alert(data.error)
+                        alert('Hay un error con el envío del formualrio, la página se recargará una vez más')
+                        window.location.href = window.origin
+                    }
+                    else{
+                        window.location.href = `${window.origin}/${data.url}`
+                    }
+                })
             })
             for(let i in $card){
                     $card[i].addEventListener('click', () => {
